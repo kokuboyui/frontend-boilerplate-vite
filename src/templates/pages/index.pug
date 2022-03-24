@@ -1,0 +1,19 @@
+extends ../_layouts/default
+
+//- '../_layout/default.pug'に変数を追加
+append var
+  - var title = config.og.meta.top.title
+  - var description = config.og.meta.top.description
+
+block head 
+
+//- 内容
+block content
+  h1 Frontend Boiler Plate
+  #js-react
+  if !config.isProduction
+    //- 開発
+    script(src='/src/scripts/top.ts')
+  else 
+    //- 本番
+    script(src=`${config.jsPath}top.bundle.js`)
