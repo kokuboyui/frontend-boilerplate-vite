@@ -17,7 +17,7 @@
 First, clone the repo via git:
 
 ```bash
-git@github.com:userName/frontend-boilerplate-vite.git
+git@github.com:kokuboyui/frontend-boilerplate-vite.git
 ```
 
 ### Install yarn
