@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
-import babel from '@rollup/plugin-babel';
+import { getBabelOutputPlugin } from '@rollup/plugin-babel';
+const path = require('path');
 const { BABEL_CONFIG } = require('./babel.config.js');
 const { BASE_CONFIG } = require('./config');
 
@@ -20,7 +21,11 @@ export default defineConfig({
     outDir: BASE_CONFIG.folderNames.out,
     manifest: true,
     rollupOptions: {
-      plugins: [babel(BABEL_CONFIG)],
+      plugins: [
+        getBabelOutputPlugin({
+          configFile: path.resolve(__dirname, 'babel.config.js'),
+        }),
+      ],
       output: {
         // vendorファイルを分けたい時使用。chunkFileNamesに吐き出される。
         manualChunks: {
